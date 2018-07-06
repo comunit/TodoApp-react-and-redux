@@ -2,7 +2,6 @@
   "name": "react-todo-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://comunit.github.io/TodoApp-react-and-redux/build",  
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
