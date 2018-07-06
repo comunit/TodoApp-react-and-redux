@@ -16,5 +16,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://comunit.github.io/TodoApp-react-and-redux/build"
+  "homepage": "."
 }
