@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, getTodo } from '../actions/TodoActions';
+import { addTodo, getTodo, deleteTodo } from '../actions/TodoActions';
 
 class Todo extends Component {
 
@@ -9,18 +9,27 @@ class Todo extends Component {
   }
 
   onSubmit = e => {
+    let todo = {
+      todo: this.refs.name.value,
+      id: Math.floor((Math.random() * 100000000000000) + 1)
+    }
     e.preventDefault();
-    this.props.addTodo(this.refs.name.value)
+    this.props.addTodo(todo)
     this.refs.name.value = '';
+    console.log(todo)
     this.forceUpdate();
   };
+
+  delete = (id) => {
+    this.props.deleteTodo(id);
+  }
   
 
   render() {
     let todo = this.props.todo.todoList;
     let todoItems = todo.map((todo, index) => {
       return(
-        <button type="button" className="btn btn-primary todobutton" key={index}>{todo}</button>
+        <button onClick={this.delete.bind(this, todo.id)} type="button" className="btn btn-primary todobutton" key={index}>{todo.todo}</button>
         )
       }
     );
@@ -49,4 +58,4 @@ const mapStateToProps = (state) => ({
   todo: state.todo
 });
 
-export default connect(mapStateToProps, {addTodo, getTodo})(Todo);
+export default connect(mapStateToProps, {addTodo, getTodo, deleteTodo})(Todo);
